@@ -1,0 +1,468 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saving Videos Offline: A Practical Guide</title>
+<meta name="description" content="How to save videos for offline viewing from YouTube, Instagram, X, Reddit, Netflix, JioHotstar and Prime Video, using your own phone or computer. Checked 16 November 2026.">
+<style>
+  :root {
+    --bg: #fbfbf9;
+    --fg: #1d1f23;
+    --muted: #5a6068;
+    --line: #d9dbd6;
+    --card: #ffffff;
+    --code-bg: #f1f2ee;
+    --code-fg: #1d1f23;
+    --accent: #0b5cad;
+    --warn-bg: #fff4d6;
+    --warn-line: #d9a400;
+    --info-bg: #e7f1fb;
+    --info-line: #2a76c6;
+    --stop-bg: #fde8e6;
+    --stop-line: #c0392b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #14161a;
+      --fg: #e6e7e9;
+      --muted: #a3a8b0;
+      --line: #2e3238;
+      --card: #1b1e23;
+      --code-bg: #0e1013;
+      --code-fg: #e6e7e9;
+      --accent: #7db7f0;
+      --warn-bg: #3a3014;
+      --warn-line: #b88a00;
+      --info-bg: #14283b;
+      --info-line: #3b82c4;
+      --stop-bg: #3a1a17;
+      --stop-line: #d4574a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  main { max-width: 46rem; margin: 0 auto; padding: 1.25rem 16px 4rem; }
+  h1 { font-size: 1.75rem; line-height: 1.25; margin: 1rem 0 0.5rem; }
+  h2 { font-size: 1.35rem; line-height: 1.3; margin: 2.5rem 0 0.75rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+  h3 { font-size: 1.1rem; margin: 1.75rem 0 0.5rem; }
+  p, ul, ol { margin: 0.6rem 0; }
+  li { margin: 0.25rem 0; }
+  a { color: var(--accent); overflow-wrap: anywhere; }
+  .lead { color: var(--muted); margin-top: 0; }
+  .checked { color: var(--muted); font-size: 0.95rem; }
+  nav ul { padding-left: 1.2rem; columns: 2 14rem; }
+  pre {
+    margin: 0.75rem 0;
+    padding: 0.8rem 0.9rem;
+    background: var(--code-bg);
+    color: var(--code-fg);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    -webkit-user-select: all;
+    user-select: all;
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+  p code, li code, td code {
+    background: var(--code-bg);
+    padding: 0.08rem 0.3rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+    overflow-wrap: anywhere;
+  }
+  .note, .warn, .stop {
+    margin: 1rem 0;
+    padding: 0.7rem 0.9rem;
+    border-left: 4px solid;
+    border-radius: 4px;
+  }
+  .note { background: var(--info-bg); border-color: var(--info-line); }
+  .warn { background: var(--warn-bg); border-color: var(--warn-line); }
+  .stop { background: var(--stop-bg); border-color: var(--stop-line); }
+  .note > :first-child, .warn > :first-child, .stop > :first-child { margin-top: 0; }
+  .note > :last-child, .warn > :last-child, .stop > :last-child { margin-bottom: 0; }
+  .scroll { overflow-x: auto; margin: 0.75rem 0; }
+  table { border-collapse: collapse; width: 100%; min-width: 34rem; background: var(--card); }
+  th, td { text-align: left; vertical-align: top; padding: 0.5rem 0.65rem; border: 1px solid var(--line); font-size: 0.95rem; }
+  th { background: var(--code-bg); }
+  .tag { font-size: 0.8rem; color: var(--muted); }
+  footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
+  footer ul { padding-left: 1.2rem; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Saving videos offline: a practical guide</h1>
+<p class="lead">Seven services, one honest answer for each. Written for use on your own phone and computer.</p>
+<p class="checked">Every fact here was checked against the official pages listed at the bottom on 16 November 2026. Apps and sites change often. If something here does not match what you see, trust the app.</p>
+
+<nav aria-label="Contents">
+  <ul>
+    <li><a href="#quick">The short answer</a></li>
+    <li><a href="#why">Why your own device works</a></li>
+    <li><a href="#install">Install yt-dlp (Linux, Windows, macOS, Android)</a></li>
+    <li><a href="#commands">Commands for common jobs</a></li>
+    <li><a href="#signin">Using your browser sign-in</a></li>
+    <li><a href="#update">When a site stops working</a></li>
+    <li><a href="#apps">Easier apps</a></li>
+    <li><a href="#official-open">Official routes: YouTube, Instagram, X, Reddit</a></li>
+    <li><a href="#drm">Netflix, JioHotstar, Prime Video</a></li>
+    <li><a href="#fair">What is fair to download</a></li>
+    <li><a href="#unconfirmed">What I could not confirm</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ul>
+</nav>
+
+<h2 id="quick">The short answer</h2>
+<div class="scroll">
+<table>
+  <thead>
+    <tr><th>Service</th><th>Best route</th><th>Official route</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>YouTube</td><td>yt-dlp on your own device</td><td>YouTube Premium offline download (phone app, or Chrome, Edge, Firefox or Opera on a computer)</td></tr>
+    <tr><td>Instagram</td><td>yt-dlp on your own device. Often needs your browser sign-in.</td><td>Download option on public reels, unless the creator turned it off. Save your own stories and reels.</td></tr>
+    <tr><td>X (Twitter)</td><td>yt-dlp on your own device</td><td>X Premium subscribers: &ldquo;Download video&rdquo; on eligible posts</td></tr>
+    <tr><td>Reddit</td><td>yt-dlp on your own device. Sometimes needs sign-in.</td><td>None found</td></tr>
+    <tr><td>Netflix</td><td>The Netflix app only</td><td>Download button in the Android, iPhone, iPad, Amazon Fire tablet and Chromebook apps</td></tr>
+    <tr><td>JioHotstar</td><td>The JioHotstar app only</td><td>Download arrow in the iOS and Android app, on a phone or tablet</td></tr>
+    <tr><td>Amazon Prime Video</td><td>The Prime Video app only</td><td>Download in the Fire tablet, iOS, Android, macOS and Windows 10/11 apps</td></tr>
+  </tbody>
+</table>
+</div>
+<p>yt-dlp is free, open-source software that runs on your own device. It is the tool this page recommends for the first four services. The last three services protect their video with DRM, so the only route covered here is each service&rsquo;s own app.</p>
+
+<h2 id="why">Why your own device works and a cloud server does not</h2>
+<p>YouTube and Instagram treat a request from a cloud server&rsquo;s address as suspect, but treat a request from a home or mobile connection like a normal viewer. yt-dlp maintainers say this about YouTube in the project&rsquo;s issue tracker: YouTube &ldquo;blocked anonymous access from many datacenter IPs&rdquo;.</p>
+<p>I found no official page that explains the same thing for Instagram. Your test failed on both, so the cause looks the same. Running yt-dlp on your own phone or computer sends the request from your own internet connection, which is the address these sites accept.</p>
+
+<h2 id="install">Install yt-dlp, ffmpeg and a JavaScript runtime</h2>
+<p>You need three things.</p>
+<ul>
+  <li><strong>yt-dlp</strong> does the downloading.</li>
+  <li><strong>ffmpeg</strong> (with ffprobe) joins separate video and audio files and converts to mp3. yt-dlp calls it &ldquo;strongly recommended&rdquo;. You will want it.</li>
+  <li><strong>A JavaScript runtime</strong>, for YouTube. YouTube sends puzzles that yt-dlp must solve with JavaScript. yt-dlp&rsquo;s own scripts for this are bundled in the official downloads. The runtime itself is separate. yt-dlp prefers <strong>Deno</strong> (version 2.3.0 or newer) and enables it by default. <strong>Node.js 22 or newer</strong> also works if you switch it on with <code>--js-runtimes node</code>. QuickJS and Bun (deprecated) are the other options.</li>
+</ul>
+<div class="note">
+  <p>You are a developer, so you may already have Node.js 22 or newer. Run <code>node --version</code>. If it shows 22 or higher, you can skip Deno and use the Node line shown under each system below.</p>
+</div>
+
+<h3>Linux</h3>
+<p>This uses the release file from yt-dlp. It needs Python 3.11 or newer. Ubuntu&rsquo;s own <code>yt-dlp</code> package is not the one the project documents, so use the release file.</p>
+<pre><code>mkdir -p ~/.local/bin
+curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o ~/.local/bin/yt-dlp
+chmod a+rx ~/.local/bin/yt-dlp</code></pre>
+<p>If you have no Python, download the standalone file <code>yt-dlp_linux</code> (64-bit Intel/AMD, glibc 2.17 or newer) from the <a href="https://github.com/yt-dlp/yt-dlp/releases/latest">releases page</a> instead.</p>
+<p>Install ffmpeg. This is the Ubuntu and Debian command, from the official packages FFmpeg&rsquo;s download page lists.</p>
+<pre><code>sudo apt install ffmpeg</code></pre>
+<p>Install a JavaScript runtime. Pick one.</p>
+<pre><code># Option A: Deno, using Deno's own install script
+curl -fsSL https://deno.land/install.sh | sh
+
+# Option B: use Node.js 22 or newer that you already have
+mkdir -p ~/.config/yt-dlp
+echo '--js-runtimes node' &gt;&gt; ~/.config/yt-dlp/config</code></pre>
+<p>Deno&rsquo;s documentation says it does not publish an official apt repository, so use the script. Open a new terminal afterward, then check:</p>
+<pre><code>yt-dlp --version
+ffmpeg -version
+deno --version</code></pre>
+
+<h3>Windows</h3>
+<p>Open PowerShell and run these three lines. They use the commands from the yt-dlp wiki, Deno&rsquo;s documentation and the winget catalogue.</p>
+<pre><code>winget install --source winget --id yt-dlp.yt-dlp
+winget install Gyan.FFmpeg
+winget install DenoLand.Deno</code></pre>
+<p>Close PowerShell and open it again so the new programs are found. Then check:</p>
+<pre><code>yt-dlp --version
+ffmpeg -version
+deno --version</code></pre>
+<p>If you prefer to download by hand, the file to get is <code>yt-dlp.exe</code> from the <a href="https://github.com/yt-dlp/yt-dlp/releases/latest">releases page</a>. yt-dlp also publishes its own ffmpeg builds at <a href="https://github.com/yt-dlp/FFmpeg-Builds">github.com/yt-dlp/FFmpeg-Builds</a>.</p>
+
+<h3>macOS</h3>
+<p>You need <a href="https://brew.sh/">Homebrew</a>. Homebrew&rsquo;s yt-dlp package lists Deno as a dependency, so it should install Deno for you.</p>
+<pre><code>brew install yt-dlp ffmpeg</code></pre>
+<pre><code>yt-dlp --version
+ffmpeg -version
+deno --version</code></pre>
+<p>If <code>deno --version</code> says &ldquo;command not found&rdquo;, run <code>brew install deno</code>.</p>
+
+<h3>Android</h3>
+<p>The documented route is Termux, a terminal app. The Termux project says to get it from F-Droid or from its GitHub releases. Its Google Play build is marked experimental, with missing functions and bugs. Then run these lines inside Termux. They follow the yt-dlp wiki&rsquo;s Termux steps, plus ffmpeg and Node.js from the Termux package list.</p>
+<pre><code>termux-setup-storage
+pkg update &amp;&amp; pkg upgrade
+pkg install python python-pip ffmpeg nodejs
+pip install -U "yt-dlp[default]"
+mkdir -p ~/.config/yt-dlp
+echo '--js-runtimes node' &gt;&gt; ~/.config/yt-dlp/config</code></pre>
+<p><code>termux-setup-storage</code> asks for permission to use your phone&rsquo;s storage. Afterward, <code>ls ~/storage</code> shows the folders you can save into. To save into your phone&rsquo;s downloads folder, add <code>-P ~/storage/downloads</code> to the commands below (check the folder name with <code>ls</code> first).</p>
+<p>If you do not want a terminal, see <a href="#apps">Easier apps</a>.</p>
+
+<h2 id="commands">Commands for common jobs</h2>
+<p>Replace <code>URL</code> with the link, and keep the quotes around it. Quotes stop your shell from breaking links that contain <code>&amp;</code> or <code>?</code>. These work the same on Linux, macOS, Windows and Termux. Tap or click a block to select all of it.</p>
+
+<h3>Best quality</h3>
+<pre><code>yt-dlp "URL"</code></pre>
+<p>This picks the best video and audio and joins them with ffmpeg. The file may come out as .webm or .mkv.</p>
+
+<h3>Best quality as an mp4 that plays anywhere</h3>
+<pre><code>yt-dlp -t mp4 "URL"</code></pre>
+<p><code>-t mp4</code> is a built-in preset. It makes an mp4 and prefers H.264 video and AAC audio, which most phones and TVs play. It puts the codec first, so it can pick a lower resolution than the very best stream.</p>
+
+<h3>Cap the quality at 1080p</h3>
+<pre><code>yt-dlp -S "res:1080,vcodec:h264,acodec:aac" --merge-output-format mp4 "URL"</code></pre>
+<p>This asks for the best video up to 1080 pixels high, and prefers H.264 and AAC within that. Use <code>res:720</code> for 720p. To see every format a link offers, run <code>yt-dlp -F "URL"</code>.</p>
+
+<h3>Audio only, as mp3</h3>
+<pre><code>yt-dlp -t mp3 "URL"</code></pre>
+<p>This needs ffmpeg and ffprobe. The longer form is <code>yt-dlp -x --audio-format mp3 "URL"</code>.</p>
+
+<h3>A whole playlist</h3>
+<pre><code>yt-dlp --yes-playlist -o "%(playlist)s/%(playlist_index)s - %(title)s.%(ext)s" "PLAYLIST_URL"</code></pre>
+<p>This puts the files in a folder named after the playlist, numbered in order. If a link points to one video inside a playlist and you want only that video, use <code>--no-playlist</code>.</p>
+<p>To make long jobs restartable, add <code>--download-archive archive.txt</code>. yt-dlp then skips anything already listed in that file. To go gently on the site, add <code>-t sleep</code>, a preset that waits between requests. YouTube&rsquo;s &ldquo;try again later&rdquo; error comes from asking too fast; the yt-dlp wiki suggests a 5 to 10 second delay between downloads.</p>
+
+<h3>Subtitles</h3>
+<pre><code>yt-dlp -t mp4 --write-subs --write-auto-subs --sub-langs "en.*" --embed-subs "URL"</code></pre>
+<p><code>--write-subs</code> saves uploaded subtitles. <code>--write-auto-subs</code> adds automatic captions. <code>--sub-langs "en.*"</code> picks every English variant. <code>--embed-subs</code> puts them inside the file, which works for mp4, mkv and webm. To get separate .srt files instead, drop <code>--embed-subs</code> and add <code>--convert-subs srt</code>.</p>
+
+<h3>Instagram, X and Reddit</h3>
+<p>Use the same commands with a post, reel or tweet link. Single posts, reels and stories are the normal case. yt-dlp&rsquo;s supported-sites list marks Instagram <em>user profile</em> downloads as &ldquo;Currently broken&rdquo;, so do not expect to save a whole profile in one go.</p>
+
+<h2 id="signin">Using your browser&rsquo;s sign-in</h2>
+<p>Some posts are visible only to a signed-in person. yt-dlp can read the sign-in cookies your browser already holds, so it looks like you. Add this to any command above:</p>
+<pre><code>yt-dlp --cookies-from-browser firefox "URL"</code></pre>
+<p>Replace <code>firefox</code> with your browser: brave, chrome, chromium, edge, opera, safari, vivaldi or whale. To pick a browser profile, write <code>BROWSER:PROFILE</code>. You must be signed in to the site in that browser first.</p>
+
+<div class="warn">
+  <p><strong>Read this before using it.</strong></p>
+  <ul>
+    <li>Cookies are like a saved password. Anyone who holds them can act as you. Never share them, and never put a cookie file in a repository or a chat.</li>
+    <li>The cookies it reads cover every site you are signed in to, not only the one you named. The yt-dlp FAQ says that exporting cookies this way exports your browser&rsquo;s cookies for all sites.</li>
+    <li>Using your account with an automated tool can get the account limited. The yt-dlp wiki says plainly that for YouTube you run the risk of the account being banned, temporarily or permanently. Use it only when you must, and slow down with <code>-t sleep</code>.</li>
+    <li>It works on a computer. Termux on a phone cannot read your phone browser&rsquo;s cookies. If a post needs sign-in, do that download on the computer.</li>
+  </ul>
+</div>
+
+<h3>When you need it</h3>
+<ul>
+  <li><strong>Instagram:</strong> often. If yt-dlp says login is required, add the option. This is how it behaves in practice. I found no official page that lists which Instagram posts need it.</li>
+  <li><strong>Reddit:</strong> sometimes. Try without it first, and add it if yt-dlp says it needs a login.</li>
+  <li><strong>X:</strong> only if yt-dlp says a login is needed for that post.</li>
+  <li><strong>YouTube:</strong> only for content that needs an account, such as age-restricted videos, private playlists and members-only videos. Normal public videos do not need it.</li>
+</ul>
+
+<h3>YouTube is different</h3>
+<p>The yt-dlp wiki says not to use <code>--cookies-from-browser</code> for YouTube. YouTube rotates cookies on any tab that stays open, so the browser&rsquo;s cookies stop working quickly. The wiki&rsquo;s method is to export a cookie file from a private window. In short:</p>
+<ol>
+  <li>Open a new private or incognito window and sign in to YouTube.</li>
+  <li>In that same tab, open <code>youtube.com/robots.txt</code>. Keep it the only private tab.</li>
+  <li>Export the youtube.com cookies with a cookie-export extension. The FAQ names &ldquo;Get cookies.txt LOCALLY&rdquo; for Chrome and &ldquo;cookies.txt&rdquo; for Firefox. It warns that the older &ldquo;Get cookies.txt&rdquo; (without LOCALLY) was reported as malware, so avoid it.</li>
+  <li>Close the private window. Then run:</li>
+</ol>
+<pre><code>yt-dlp --cookies youtube-cookies.txt "URL"</code></pre>
+<p>The wiki also suggests a throwaway account where you can. Treat the file as a password and delete it when done.</p>
+
+<h2 id="update">When a site stops working</h2>
+<p>Sites change their code often, and yt-dlp changes to keep up. In almost every case the fix is a newer yt-dlp. Update first, then try again.</p>
+<pre><code># release-file installs (Linux, Windows, macOS)
+yt-dlp -U
+
+# the yt-dlp README recommends the nightly channel for regular users
+yt-dlp --update-to nightly</code></pre>
+<p>If you installed another way, update the same way:</p>
+<pre><code># pip, and Termux on Android
+python3 -m pip install -U "yt-dlp[default]"
+# in Termux, use:  pip install -U "yt-dlp[default]"
+
+# Homebrew (macOS)
+brew upgrade yt-dlp
+
+# winget (Windows)
+winget upgrade --source winget --id yt-dlp.yt-dlp</code></pre>
+<p>If YouTube still fails after an update, check these in order:</p>
+<ol>
+  <li>Is a JavaScript runtime installed? Run <code>deno --version</code> (or <code>node --version</code> if you use Node).</li>
+  <li>Is it new enough? Deno 2.3.0 or later, Node 22.0.0 or later.</li>
+  <li>Did you set <code>--js-runtimes node</code> if you use Node? Only Deno is on by default.</li>
+  <li>Are you on a cloud server or a VPN? See <a href="#why">above</a>. Try your home connection.</li>
+  <li>Did you see 429, or &ldquo;try again later&rdquo;? You asked too fast. Wait, and add <code>-t sleep</code>.</li>
+</ol>
+
+<h2 id="apps">Easier apps</h2>
+<p>These apps wrap yt-dlp or do similar work. I checked each project&rsquo;s own page and its recent activity on 16 November 2026. Download them only from the places the project itself names.</p>
+
+<h3>Android</h3>
+<ul>
+  <li><strong>YTDLnis.</strong> Free, open source (GPL-3.0), for Android 7.0 and newer. It uses yt-dlp and says it can download from more than 1000 sites. Playlists, queues and subtitles are included. Latest release v1.9.1.1 on 19 October 2026, and code changes continue. Get it from F-Droid, IzzyOnDroid or the project&rsquo;s GitHub releases. The project says those are the only trusted sources. Keep it updated, because it relies on yt-dlp.</li>
+  <li><strong>NewPipe.</strong> Free, open source (GPL-3.0). It is a YouTube front-end that can also download videos, audio and subtitles. Its services are YouTube and YouTube Music, PeerTube, Bandcamp, SoundCloud and media.ccc.de. <strong>It does not cover Instagram, X or Reddit.</strong> Latest release v0.29.3 on 10 November 2026. The project calls the app beta. Install it from F-Droid (using NewPipe&rsquo;s own repository) or from GitHub, comparing the signing key with the one listed on the project page.</li>
+  <li><strong>Seal.</strong> I do not recommend it. It is a yt-dlp-based Android app, but its last stable release is v1.13.1 from October 2024, and I saw no code changes after April 2025. I could not confirm it is maintained.</li>
+</ul>
+
+<h3>Windows, macOS and Linux</h3>
+<ul>
+  <li><strong>Open Video Downloader.</strong> A desktop app around yt-dlp, with no command line. Free and open source (AGPL-3.0). It handles playlists, subtitles, audio-only and quality choices, can use a browser cookie file, and says it keeps both itself and yt-dlp updated automatically. Latest release v3.2.1 on 5 July 2026. Download it from the project&rsquo;s GitHub releases page. The project recommends that over the Microsoft Store copy, because store updates arrive later and yt-dlp does not auto-update there.</li>
+  <li><strong>ytDownloader.</strong> A desktop app for Windows, macOS and Linux, free and open source (GPL-3.0). It is under active development; latest release v4.1.0 on 11 November 2026. On macOS its README says you must install yt-dlp separately with Homebrew, and the macOS app is unsigned, so the README gives extra steps to open it.</li>
+</ul>
+<p>I could not confirm from these projects&rsquo; pages how each handles YouTube&rsquo;s JavaScript requirement. If YouTube fails in an app, update the app first. The command-line route above is the one yt-dlp itself documents.</p>
+
+<h2 id="official-open">Official routes: YouTube, Instagram, X, Reddit</h2>
+<p>These are the services&rsquo; own download features. They are the safest choice when they cover what you want. They work only inside the service&rsquo;s own app or site.</p>
+
+<h3>YouTube Premium offline downloads</h3>
+<ul>
+  <li><strong>Who:</strong> you must be signed in. In most places this needs YouTube Premium. YouTube&rsquo;s help also lists some countries where some videos can be downloaded without it. Check the app to see whether a given video shows a Download button for you in India.</li>
+  <li><strong>Phone or tablet:</strong> open the video in the YouTube app and tap Download below it. Set the quality under Settings, Background &amp; downloads, Download quality. You can limit downloads to Wi-Fi.</li>
+  <li><strong>Computer:</strong> sign in to a Premium account at youtube.com in Chrome, Edge, Firefox or Opera, open the video and click Download. Find downloads under Downloads in the left menu.</li>
+  <li><strong>Limits:</strong> downloads play offline for up to 29 days. After that the device must reconnect to the internet. In some countries the limit is 48 hours. The downloaded files are stored encrypted and play only inside the YouTube app. Some videos have no Download button. You cannot download more if less than 5% of storage is free. The help page does not give a device limit.</li>
+  <li><strong>Audio:</strong> YouTube&rsquo;s help says you cannot download audio, music or MP3 files from the YouTube app.</li>
+</ul>
+
+<h3>Instagram</h3>
+<ul>
+  <li><strong>Public reels:</strong> Instagram&rsquo;s help says anyone can download a public account&rsquo;s reel unless the creator turns off reel downloads, in account settings or on that reel. Look for a Download option in the reel&rsquo;s share or options menu in the app. The exact label can differ by app version. Check in the app.</li>
+  <li><strong>Private accounts:</strong> not downloadable by others. Instagram lists no one for private accounts.</li>
+  <li><strong>Your own content:</strong> you can save your own reel drafts and your own stories to your camera roll. A download of your own reel does not include music you added from Instagram&rsquo;s music library.</li>
+  <li><strong>All your data:</strong> Instagram also lets you export a copy of your own information from your account settings.</li>
+</ul>
+
+<h3>X (Twitter)</h3>
+<ul>
+  <li><strong>Who:</strong> X Premium subscribers, including the Plus, Premium, Super and Ultra plans of The X Subscription, can download videos from certain posts. Not every video qualifies.</li>
+  <li><strong>How:</strong> open the video, tap the three-dot icon and choose &ldquo;Download video&rdquo;.</li>
+  <li><strong>Limits:</strong> videos uploaded since 25 July 2023 can be downloaded unless the uploader turned off &ldquo;Allow video to be downloaded&rdquo;. Older videos cannot. Accounts under 18 have downloads switched off.</li>
+  <li>Check in the app. I could read X&rsquo;s help page only through a search result, because the site refused my direct request.</li>
+</ul>
+
+<h3>Reddit</h3>
+<p>I found no Reddit help page about downloading a video file. Reddit has a Save feature, which keeps a post in your account. I did not find any page saying it keeps the video file offline. Use yt-dlp for Reddit videos you are allowed to keep.</p>
+
+<h2 id="drm">Netflix, JioHotstar and Amazon Prime Video</h2>
+<div class="stop">
+  <p><strong>These three services protect their streams with DRM. This page covers only each service&rsquo;s own offline feature in its own app. It does not cover anything else, because that breaks the services&rsquo; terms and, in many places, the law.</strong></p>
+</div>
+<p>Downloaded titles stay inside the app, expire, and are tied to your account. That is how the official feature works.</p>
+
+<h3>Netflix</h3>
+<ul>
+  <li><strong>Devices and apps:</strong> the Netflix app on an Android phone or tablet, an iPhone or iPad, an Amazon Fire tablet, or a Chromebook with the Google Play Store. Netflix&rsquo;s help page for downloads does not list Windows, Mac or web browsers. Some older operating system versions do not support downloads. Update the app first.</li>
+  <li><strong>How:</strong> on a phone or tablet, open My Netflix, then Downloads, then &ldquo;See What You Can Download&rdquo;. Or tap the download button on a title&rsquo;s page. Movies have one button. For a show, download single episodes or a whole season. On a Chromebook, go to Downloads, then Find More to Download.</li>
+  <li><strong>Plans and devices:</strong> Netflix&rsquo;s plans page says how many devices can hold downloads at a time: Mobile, 1 phone or tablet. Basic, 1. Standard, 2. Premium, 6. Check your own plan in your account.</li>
+  <li><strong>Limits:</strong> up to 100 active downloads per device on ad-free plans. On ad-supported plans the cap is 15 downloads per device per calendar month, on 2 devices. The count resets on the first of the month. Ad-supported plans also lack the &ldquo;Downloads for You&rdquo; and &ldquo;Download Next Episode&rdquo; features.</li>
+  <li><strong>Expiry:</strong> downloads expire after a period of time. Netflix&rsquo;s help does not say how long, so check in the app. You can replay a download as often as you like until it expires. To renew an expired download, delete it and download it again. A title that has left Netflix cannot be renewed. Some titles also limit how many times they can be downloaded or renewed, for example per year.</li>
+  <li><strong>Titles you cannot download:</strong> not every show or movie is available. Netflix gives reasons such as rights that are exclusive to another company, rights it cannot buy, or other local factors.</li>
+  <li><strong>Other:</strong> downloads belong to the device that downloaded them, and any profile on it can watch them. Higher-rated titles may not show on Kids profiles. If you cancel your account, the downloads on your device are deleted.</li>
+</ul>
+
+<h3>JioHotstar</h3>
+<ul>
+  <li><strong>Devices and apps:</strong> the JioHotstar app on iOS and Android, on a phone or tablet. You cannot download on a laptop or a TV. Update the app first.</li>
+  <li><strong>How:</strong> open the film or episode, then tap the downward arrow below its thumbnail. Choose a quality.</li>
+  <li><strong>Quality by plan:</strong> Mobile plan, HD 720p or Low 480p. Super and Premium plans, those two or Full HD 1080p. To set a default, open the profile icon, then Help &amp; Settings, Downloads, Default Download Video Quality.</li>
+  <li><strong>Expiry:</strong> downloads stay while you are an active subscriber and connect the device to the internet at least once every 30 days. A title can also expire when its rights on the platform end.</li>
+  <li><strong>Number of titles:</strong> JioHotstar&rsquo;s help says you can download unlimited titles, depending on your storage.</li>
+  <li><strong>Limits:</strong> downloaded content is deleted if you reinstall the app or clear its data. If you are outside India, the download option and downloaded content are not available. Keep the app open while a download runs.</li>
+  <li><strong>Titles you cannot download:</strong> if a title shows no download option, JioHotstar does not have download rights for it. Most content has them, but not all.</li>
+  <li>Plans and rules change. Check the app for what your plan allows.</li>
+</ul>
+
+<h3>Amazon Prime Video</h3>
+<ul>
+  <li><strong>Devices and apps:</strong> an Amazon Fire tablet, or the Prime Video app on iOS, Android, macOS or Windows 10 and 11.</li>
+  <li><strong>How:</strong> open the app, find the title and choose the download option on its details page. For a show, you can download a whole season, or single episodes with the download icon in the episode list.</li>
+  <li><strong>Where it saves:</strong> in the Android and Windows apps you can choose the storage location. Amazon does not recommend saving to USB-connected drives.</li>
+  <li><strong>Devices:</strong> for Prime subscription titles, you can download to two devices at one time. Prime Video Mobile Edition allows a single Android or iOS device. Purchased titles can go to four compatible devices. A rented title can be downloaded to only one device.</li>
+  <li><strong>Number of titles:</strong> Amazon sets a maximum number of downloaded titles at a time across your account. It may vary by location. The Usage Rules do not give a number for India. Check the app.</li>
+  <li><strong>Expiry:</strong> for subscription titles you typically have 30 days to start watching and 48 hours to finish once you press play. Rentals also typically give 48 hours once started, and must be finished before the rental window ends, usually 30 days after payment. Downloads of subscription titles stop when your membership ends.</li>
+  <li><strong>Titles you cannot download:</strong> each title&rsquo;s page says whether it can be downloaded. Free videos are not available for download.</li>
+  <li><strong>Other:</strong> playing a downloaded title over Chromecast or AirPlay is not permitted.</li>
+  <li>The Usage Rules page I read is not specific to India, and it says limits can vary by location. Treat the numbers as a guide and check the app.</li>
+</ul>
+
+<h2 id="fair">What is fair to download</h2>
+<ul>
+  <li><strong>Your own uploads.</strong> Videos you made and posted are yours to keep a copy of.</li>
+  <li><strong>Videos the owner lets you save.</strong> That means the owner switched on a download option, or gave you permission, or published under a licence that allows copies.</li>
+  <li><strong>Personal offline viewing, where the service&rsquo;s terms permit it.</strong> The official offline features above are the clearest case. Do not re-upload or share what you save.</li>
+</ul>
+<div class="warn">
+  <p><strong>YouTube.</strong> YouTube&rsquo;s Terms of Service say you may not &ldquo;access, reproduce, download&rdquo; content except as the service expressly authorizes, or with YouTube&rsquo;s written permission. Downloading from YouTube with a third-party tool is therefore against YouTube&rsquo;s terms of service. That is true even though yt-dlp itself is legitimate open-source software. The risk is to your account, and the terms say that is a breach. Use the official Premium download when it covers you.</p>
+</div>
+<p>I did not check the terms of Instagram, X or Reddit. Read them before you save anything you do not own.</p>
+
+<h2 id="unconfirmed">What I could not confirm</h2>
+<ul>
+  <li>The commands were checked against the yt-dlp README and wiki option by option. I did not run them on a device for this page.</li>
+  <li><strong>Instagram:</strong> I could not read the full text of Instagram&rsquo;s help pages. The permission rules come from the search-result text of those pages. The viewer-side menu label for Download is not confirmed. Whether Instagram posts need sign-in is from how yt-dlp behaves in practice, not from an official page.</li>
+  <li><strong>X:</strong> X&rsquo;s help site refused my direct request. The download rules come from the page text shown in a search result. Check in the app.</li>
+  <li><strong>Reddit:</strong> no official download feature found, as said above.</li>
+  <li><strong>YouTube:</strong> I could not confirm whether videos show a free Download button in India. Check the app.</li>
+  <li><strong>Netflix:</strong> the help page gives no length for download expiry. The per-plan device counts come from Netflix&rsquo;s plans page and may differ for India.</li>
+  <li><strong>JioHotstar:</strong> the help pages do not state which plans can download. Only the quality choices by plan are given. I left out anything else I read only on third-party sites, such as live sports or exact expiry days.</li>
+  <li><strong>Prime Video:</strong> the numbers come from Amazon&rsquo;s global Usage Rules and may differ in India.</li>
+  <li><strong>Seal and the desktop apps:</strong> see their notes above. I did not test any app.</li>
+</ul>
+
+<footer id="sources">
+  <h2 style="border-top:0;margin-top:0;padding-top:0">Sources</h2>
+  <p>Official pages used. All checked on 16 November 2026.</p>
+  <h3>yt-dlp and tools</h3>
+  <ul>
+    <li><a href="https://github.com/yt-dlp/yt-dlp">yt-dlp README</a> (options, presets, update channels, configuration)</li>
+    <li><a href="https://github.com/yt-dlp/yt-dlp/wiki/Installation">yt-dlp wiki: Installation</a></li>
+    <li><a href="https://github.com/yt-dlp/yt-dlp/wiki/EJS">yt-dlp wiki: EJS (JavaScript runtimes)</a></li>
+    <li><a href="https://github.com/yt-dlp/yt-dlp/wiki/Extractors">yt-dlp wiki: Extractors (YouTube cookies)</a></li>
+    <li><a href="https://github.com/yt-dlp/yt-dlp/wiki/FAQ">yt-dlp wiki: FAQ (cookies)</a></li>
+    <li><a href="https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md">yt-dlp supported sites</a></li>
+    <li><a href="https://github.com/yt-dlp/yt-dlp/issues/12475">yt-dlp issue 12475 (maintainers on blocked IP addresses)</a></li>
+    <li><a href="https://github.com/yt-dlp/yt-dlp/releases/latest">yt-dlp releases</a></li>
+    <li><a href="https://docs.deno.com/runtime/getting_started/installation/">Deno installation</a></li>
+    <li><a href="https://ffmpeg.org/download.html">FFmpeg download page</a></li>
+    <li><a href="https://github.com/termux/termux-app">Termux project page</a></li>
+  </ul>
+  <h3>Apps</h3>
+  <ul>
+    <li><a href="https://github.com/deniscerri/ytdlnis">YTDLnis</a></li>
+    <li><a href="https://github.com/TeamNewPipe/NewPipe">NewPipe</a></li>
+    <li><a href="https://github.com/JunkFood02/Seal">Seal</a></li>
+    <li><a href="https://github.com/jely2002/youtube-dl-gui">Open Video Downloader</a></li>
+    <li><a href="https://github.com/aandrew-me/ytDownloader">ytDownloader</a></li>
+  </ul>
+  <h3>Official download features</h3>
+  <ul>
+    <li><a href="https://support.google.com/youtube/answer/11977233">YouTube Help: Watch videos offline with YouTube Premium</a></li>
+    <li><a href="https://support.google.com/youtube/answer/6141269">YouTube Help: Watch videos offline on mobile in select countries and regions</a></li>
+    <li><a href="https://support.google.com/youtube/answer/7381437">YouTube Help: YouTube videos offline FAQs</a></li>
+    <li><a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a></li>
+    <li><a href="https://help.instagram.com/520831036611383/">Instagram Help: Who can download your Instagram reels</a></li>
+    <li><a href="https://help.instagram.com/742856103197927/">Instagram Help: Manage reels on Instagram</a></li>
+    <li><a href="https://help.instagram.com/639718330257952">Instagram Help: Save and edit drafts of your reel</a></li>
+    <li><a href="https://help.instagram.com/142167909546084/">Instagram Help: Save your Instagram story to your device&rsquo;s camera roll</a></li>
+    <li><a href="https://help.x.com/en/using-x/x-videos">X Help: How to share and watch videos on X</a></li>
+    <li><a href="https://help.netflix.com/en/node/54816">Netflix Help: How to download titles to watch offline</a></li>
+    <li><a href="https://help.netflix.com/en/node/54865">Netflix Help: Downloaded title says &lsquo;Expired&rsquo;</a></li>
+    <li><a href="https://help.netflix.com/en/node/54870">Netflix Help: Why isn&rsquo;t a movie or TV show available for download?</a></li>
+    <li><a href="https://help.netflix.com/en/node/133763">Netflix Help: &lsquo;Download Max Reached&rsquo;</a></li>
+    <li><a href="https://help.netflix.com/en/node/24926">Netflix Help: Plans and Pricing</a></li>
+    <li><a href="https://help.hotstar.com/in/en/support/solutions/articles/6426a8ceff0b65290069370c-How-to-download-content-on-my-device-s--">JioHotstar Help: How to download content on my device(s)?</a></li>
+    <li><a href="https://help.hotstar.com/in/en/support/solutions/articles/61000278550-How-long-will-downloaded-content-remain-on-my-device-s--">JioHotstar Help: How long will downloaded content remain on my device(s)?</a></li>
+    <li><a href="https://help.hotstar.com/in/en/support/solutions/articles/61000278545-I-am-unable-to-download-content">JioHotstar Help: I am unable to download content</a></li>
+    <li><a href="https://www.primevideo.com/help?nodeId=GMF637NHNEF9D8GT">Prime Video Help: Download Prime Video titles</a></li>
+    <li><a href="https://www.primevideo.com/usage/en">Prime Video Usage Rules</a></li>
+  </ul>
+  <p>Date checked: 16 November 2026.</p>
+</footer>
+
+</main>
+</body>
+</html>
