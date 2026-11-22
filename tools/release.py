@@ -14,7 +14,7 @@ script stops if a file it would touch has changes not yet committed. Then push w
     git push origin HEAD --follow-tags
 
 Every page shows the version through an element marked data-site-version, for example
-<span data-site-version>v1.0.0</span>. Files in a subfolder that holds its own VERSION belong to that other
+<span data-site-version>vX.Y.Z</span> with real numbers. Files in a subfolder that holds its own VERSION belong to that other
 site and are left alone.
 """
 import datetime
@@ -58,7 +58,7 @@ def main():
     others = {os.path.dirname(f) for f in files if os.path.basename(f) == "VERSION" and os.path.dirname(f) != ("" if rel == "." else rel)}
     pages = []
     for f in files:
-        if any(f.startswith(o + "/") for o in others) or not f.endswith((".html", ".htm", ".py", ".mjs", ".js")):
+        if f.endswith("tools/release.py") or any(f.startswith(o + "/") for o in others) or not f.endswith((".html", ".htm", ".py", ".mjs", ".js")):
             continue
         try:
             text = open(f, encoding="utf-8").read()
