@@ -1,0 +1,9 @@
+# Saving Videos Offline: A Practical Guide
+
+> How to save videos for offline viewing from YouTube, Instagram, X, Reddit, Netflix, JioHotstar and Prime Video, using your own phone or computer. Checked 16 November 2026.
+
+- [The guide](https://muraliprasanth.github.io/video-options/): one page, with the official route for each app and the sources it was checked against
+
+## Notes
+
+- One static page with no trackers. Feedback can be sent from the box at the bottom of the page.
