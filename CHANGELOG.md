@@ -13,6 +13,10 @@ updates VERSION, this file and the version on the pages, and makes one commit an
 
 <!-- new versions go below this line -->
 
+## v1.1.0 (2026-11-24)
+
+- Feedback box; llms.txt and llm.txt
+
 ## v1.0.0 (2026-11-22)
 
 - First numbered version: the site as it stood on 22 Nov 2026 (commit 9885143).
