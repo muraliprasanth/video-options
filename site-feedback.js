@@ -24,7 +24,7 @@
     box.style.maxWidth = box.style.maxWidth || "40rem";
 
     var details = el("details");
-    var summary = el("summary", { textContent: "Send feedback" }, { cursor: "pointer", fontWeight: "600" });
+    var summary = el("summary", { textContent: "Wanna say something?" }, { cursor: "pointer", fontWeight: "600" });
     var form = el("form", { noValidate: true }, { display: "grid", gap: "0.5rem", marginTop: "0.75rem" });
     var id = "site-feedback-text-" + site;
     var label = el("label", { htmlFor: id, textContent: "Anything you want to say: feedback, ideas, what you like or do not, or a thank-you. Anonymous, text only, no links." });

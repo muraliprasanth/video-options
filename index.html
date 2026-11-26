@@ -7,38 +7,21 @@
 <meta name="description" content="How to save videos for offline viewing from YouTube, Instagram, X, Reddit, Netflix, JioHotstar and Prime Video, using your own phone or computer. Checked 16 November 2026.">
 <style>
   :root {
-    --bg: #fbfbf9;
-    --fg: #1d1f23;
-    --muted: #5a6068;
-    --line: #d9dbd6;
+    --bg: #f5f5f7;
+    --fg: #1d1d1f;
+    --muted: #424245;
+    --line: #d2d2d7;
     --card: #ffffff;
-    --code-bg: #f1f2ee;
-    --code-fg: #1d1f23;
-    --accent: #0b5cad;
-    --warn-bg: #fff4d6;
-    --warn-line: #d9a400;
-    --info-bg: #e7f1fb;
-    --info-line: #2a76c6;
+    --code-bg: #eef2f4;
+    --code-fg: #1d1d1f;
+    --accent: #0066cc;
+    --warn-bg: #fdf0e3;
+    --warn-line: #b25000;
+    --info-bg: #e8f1fc;
+    --info-line: #0071e3;
     --stop-bg: #fde8e6;
-    --stop-line: #c0392b;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14161a;
-      --fg: #e6e7e9;
-      --muted: #a3a8b0;
-      --line: #2e3238;
-      --card: #1b1e23;
-      --code-bg: #0e1013;
-      --code-fg: #e6e7e9;
-      --accent: #7db7f0;
-      --warn-bg: #3a3014;
-      --warn-line: #b88a00;
-      --info-bg: #14283b;
-      --info-line: #3b82c4;
-      --stop-bg: #3a1a17;
-      --stop-line: #d4574a;
-    }
+    --stop-line: #c9302c;
+    color-scheme: light;
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -46,7 +29,8 @@
     margin: 0;
     background: var(--bg);
     color: var(--fg);
-    font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Inter, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
   main { max-width: 46rem; margin: 0 auto; padding: 1.25rem 16px 4rem; }
   h1 { font-size: 1.75rem; line-height: 1.25; margin: 1rem 0 0.5rem; }
@@ -72,7 +56,7 @@
     font-size: 0.92rem;
     line-height: 1.5;
   }
-  code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+  code { font-family: "SF Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
   p code, li code, td code {
     background: var(--code-bg);
     padding: 0.08rem 0.3rem;
