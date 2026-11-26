@@ -13,6 +13,10 @@ updates VERSION, this file and the version on the pages, and makes one commit an
 
 <!-- new versions go below this line -->
 
+## v1.2.0 (2026-11-26)
+
+- macOS light theme
+
 ## v1.1.0 (2026-11-24)
 
 - Feedback box; llms.txt and llm.txt
